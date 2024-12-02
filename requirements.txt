@@ -1,0 +1,8 @@
+Flask==2.3.2
+Flask-SQLAlchemy==3.0.5
+Flask-Migrate==4.0.4
+SQLAlchemy==2.0.20
+click==8.1.7
+Werkzeug==2.3.7
+Jinja2==3.1.2
+itsdangerous==2.2.0
