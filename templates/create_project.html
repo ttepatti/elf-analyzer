@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Create a New Project</h2>
+
+<form action="/projects/create" method="POST" class="create-project-form">
+    <!-- Project Name -->
+    <div class="form-group">
+        <label for="project-name">
+            Project Name <span class="required">*</span>
+        </label>
+        <input type="text" id="project-name" name="name" placeholder="Enter project name" required>
+        <p class="form-help-text">This is the name your project will go by. Give it a fun name! :)</p>
+    </div>
+
+    <!-- Folder Path -->
+    <div class="form-group">
+        <label for="folder-path">
+            Folder Path <span class="required">*</span>
+        </label>
+        <input type="text" id="folder-path" name="folder_path" placeholder="/path/to/project/folder" required>
+        <p class="form-help-text">Specify the absolute path to the folder containing your binaries. For example: <code>/home/user/projects/my_project</code></p>
+    </div>
+
+    <!-- Description -->
+    <div class="form-group">
+        <label for="description">Description</label>
+        <textarea id="description" name="description" placeholder="Add a description for your project (optional)" rows="4"></textarea>
+        <p class="form-help-text">You can use this field to describe your project. This is optional but helpful!</p>
+    </div>
+
+    <!-- Submit and Cancel Buttons -->
+    <div class="form-buttons">
+        <button type="submit" class="button">Create Project</button>
+        <a href="/projects" class="button cancel-button">Cancel</a>
+    </div>
+</form>
+{% endblock %}

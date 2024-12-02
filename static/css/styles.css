@@ -1,0 +1,897 @@
+/* ------------------------------ */
+/* GENERAL - APPLIES TO ALL PAGES */
+/* ------------------------------ */
+
+/* General Reset */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Courier New", Courier, monospace;
+    background-color: #000;
+    /*color: #ffaa33;*/
+    color: #ddd; /* Non-header text will be gray */
+}
+
+/* Make all of our headings amber! */
+h1, h2, h3, h4, h5, h6 {
+    color: #ffaa33; /* Amber text color */
+}
+
+/* strong-highlighted text (bold) */
+strong {
+    color: #ffaa33; /* Amber text color */
+}
+
+/* Links and Highlighted Text */
+a, .highlight {
+    color: #00ffaa; /* Teal for emphasis and links */
+    text-decoration: none; /* Remove underline for links */
+}
+
+a:hover, .highlight:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+/* Paragraphs */
+p {
+    color: #ddd; /* Light gray for regular text */
+    margin: 0 0 10px; /* Add some spacing between paragraphs */
+}
+
+/* Inputs and Form Elements */
+input, textarea, select {
+    color: #ddd; /* Light gray text inside input fields */
+    background-color: #333; /* Dark background for form controls */
+    border: 1px solid #555; /* Subtle dark border */
+    border-radius: 5px; /* Smooth edges */
+    padding: 8px; /* Comfortable padding */
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none; /* Remove default focus outline */
+    border-color: #ffaa33; /* Amber border on focus */
+    box-shadow: 0 0 5px #ffaa33; /* Subtle glow */
+}
+
+/* Highlighted Matching Text */
+.matching-strings ul li, .filter-highlight {
+    color: #00ffaa; /* Teal for filter highlights */
+    font-family: monospace; /* Terminal-style font */
+}
+
+.matching-strings ul li:hover, .filter-highlight:hover {
+    text-shadow: 0 0 5px #00ffaa, 0 0 10px #00ffaa; /* Glow effect on hover */
+    cursor: pointer; /* Pointer for interactivity */
+}
+
+/* Breadcrumb Navigation */
+.breadcrumb a {
+    color: #00ffaa; /* Teal for navigation links */
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+.breadcrumb span {
+    color: #ddd; /* Light gray for non-clickable text */
+}
+
+/* Center Content Horizontally, Align to Top Vertically */
+.container {
+    display: flex;
+    justify-content: center; /* Horizontal centering */
+    align-items: flex-start; /* Align to top vertically */
+    min-height: 100vh; /* Full viewport height */
+    padding: 20px; /* Padding around content */
+    box-sizing: border-box;
+}
+
+/* Main Content Box */
+.content-box {
+    max-width: 1000px;
+    width: 100%;
+    padding: 20px;
+    border: 2px solid #ffaa33;
+    box-shadow: 0 0 20px #ffaa33;
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    margin-top: 20px; /* Adds space below the breadcrumb */
+}
+
+/* Breadcrumb Navigation */
+.breadcrumb {
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+.breadcrumb a {
+    text-decoration: none;
+    color: #ffaa33;
+    margin-right: 5px;
+}
+.breadcrumb span {
+    color: #6c757d;
+}
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+/* Global Button Styles */
+.button {
+    background-color: #ffaa33; /* Amber background */
+    color: #000; /* Black text for better contrast */
+    padding: 8px 15px; /* Compact and consistent sizing */
+    font-size: 1rem; /* Standard font size */
+    border-radius: 5px; /* Smooth corners */
+    border: none; /* No border */
+    cursor: pointer; /* Pointer on hover */
+    display: inline-block; /* Inline buttons align properly */
+    text-align: center; /* Ensure text is centered */
+    text-decoration: none; /* Remove underline for link-like buttons */
+}
+
+/* Hover Effects */
+.button:hover {
+    background-color: #ffbf66; /* Lighter amber on hover */
+    color: #000; /* Retain black text for consistency */
+    box-shadow: 0 0 10px #ffaa33; /* Subtle glow */
+    transition: all 0.2s ease-in-out; /* Smooth transitions */
+}
+
+/* Cancel Button (Secondary Action) */
+.cancel-button {
+    background-color: #555; /* Dark gray background */
+    color: #ddd; /* Light gray text */
+    padding: 8px 15px; /* Consistent padding */
+    font-size: 1rem; /* Match primary button size */
+    border-radius: 5px; /* Smooth corners */
+    border: none; /* No border */
+    cursor: pointer; /* Pointer for hover effect */
+    text-decoration: none; /* Remove underline for link-like buttons */
+    display: inline-block; /* Consistent alignment */
+    text-align: center; /* Center text inside button */
+}
+
+.cancel-button:hover {
+    background-color: #777; /* Slightly lighter gray for hover */
+    color: #000; /* Black text for hover contrast */
+    box-shadow: 0 0 5px #555; /* Subtle glow effect */
+    transition: all 0.2s ease-in-out; /* Smooth hover transition */
+}
+
+/* Title and Button Alignment */
+.title-container {
+    display: flex;
+    justify-content: space-between; /* Space between title and button */
+    align-items: center; /* Vertically align title and button */
+    margin-bottom: 20px; /* Add space below the container */
+}
+
+.title-container h2 {
+    margin: 0; /* Remove default margin for better alignment */
+}
+
+.title-container .button {
+    margin: 0; /* Ensure no extra margin on the button */
+}
+
+/* Scrollable Textarea */
+.scrollable-textarea {
+    max-height: 300px;
+    overflow-y: auto;
+    background: #000;
+    border: 1px solid #ffaa33;
+    color: #ffaa33;
+    padding: 10px;
+    font-family: monospace;
+    white-space: pre-wrap;
+}
+
+/* ----------------------------- */
+/* --- Specific to base.html --- */
+/* ----------------------------- */
+
+/* Terminal Background (optimized) */
+.terminal-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, #000 0%, #111 100%);
+    z-index: -1; /* Keep it behind everything */
+    pointer-events: none; /* Prevent interaction */
+    opacity: 0.9;
+}
+
+.terminal-background::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(transparent 95%, rgba(0, 255, 170, 0.1) 100%);
+    opacity: 0.05;
+}
+
+
+/* Title Styling */
+#website-title {
+    color: #00ffaa; /* Teal for the title */
+    font-family: monospace;
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px #00ffaa, 0 0 20px #00ffaa;
+}
+
+/* Flicker Effect */
+@keyframes flicker {
+    0%, 100% {
+        opacity: 0.9;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+/* Header Styling */
+.header {
+    display: flex;
+    justify-content: space-between; /* Space between title and navigation */
+    align-items: center; /* Align items vertically */
+    padding: 10px 20px; /* Add spacing around header */
+    border-bottom: 1px solid #555; /* Subtle divider below header */
+}
+
+/* Title Styling */
+#website-title {
+    color: #00ffaa; /* Teal for the title */
+    font-family: monospace;
+    font-size: 2rem;
+    margin: 0; /* Remove default margin */
+    text-shadow: 0 0 10px #00ffaa, 0 0 20px #00ffaa;
+}
+
+/* Navigation Styling */
+.navigation {
+    display: flex;
+    gap: 15px; /* Space between links */
+}
+
+.navigation a {
+    color: #ffaa33; /* Amber links */
+    text-decoration: none; /* Remove underline */
+    font-family: monospace;
+    font-size: 1rem;
+    padding: 5px 10px;
+    border: 1px solid #ffaa33; /* Amber border */
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+.navigation a:hover {
+    background-color: #ffaa33; /* Amber hover background */
+    color: #000; /* Dark text on hover */
+    box-shadow: 0 0 10px #ffaa33;
+}
+
+/* ------------------------------ */
+/* --- specific to index.html --- */
+/* ------------------------------ */
+
+/* Welcome Section */
+.welcome-section {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.welcome-section .typing-effect {
+    color: #ffaa33;
+    font-family: monospace;
+    font-size: 1.2rem;
+    animation: typing 3s steps(40, end), blink 0.5s step-end infinite alternate;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid #ffaa33;
+}
+
+/* Typing Animation */
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
+}
+
+/* Dashboard Section */
+.dashboard-section {
+    display: flex;
+    gap: 20px; /* Space between the two boxes */
+    margin-top: 20px;
+    align-items: stretch; /* Ensures both boxes stretch to the same height */
+}
+
+.dashboard-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.dashboard-buttons .button {
+    padding: 10px 20px;
+}
+
+/* Shared Box Styling */
+.quote-box, .cow-panel {
+    flex: 1; /* Equal width for both boxes */
+    background-color: #1a1a1a; /* Dark background */
+    border: 1px solid #555; /* Subtle border */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 0 5px #333; /* Slight shadow */
+    padding: 20px;
+}
+
+/* Quote Box Specific Styling */
+.quote-box h3 {
+    color: #ffaa33; /* Amber heading */
+    margin-bottom: 10px;
+}
+
+.quote-box .quote {
+    font-size: 1.1rem;
+    color: #ddd; /* Light gray text for the quote */
+    margin: 0;
+    font-style: italic;
+}
+
+.quote-box .author {
+    font-size: 0.9rem;
+    color: #888; /* Muted gray for author */
+    margin-top: 10px;
+    text-align: right;
+}
+
+/* Quick Access Panel */
+.cow-panel {
+    display: flex;
+    align-items: flex-start; /* Align items to the top */
+    justify-content: space-between; /* Space out buttons and cow */
+    gap: 20px; /* Space between buttons and cow */
+    padding: 20px;
+    background-color: #1a1a1a; /* Dark background */
+    border: 1px solid #555; /* Subtle border */
+    border-radius: 5px;
+    box-shadow: 0 0 5px #333; /* Slight shadow */
+}
+
+/* Quick Access Links */
+.quick-access-links {
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+    gap: 10px; /* Space between buttons */
+    flex-grow: 1; /* Take up remaining space */
+}
+
+/* ASCII Art Styling */
+.cow {
+    font-family: "Courier New", monospace; /* Force monospace font */
+    font-size: 0.9rem; /* Adjust size for better readability */
+    line-height: 1.2; /* Control line height to maintain alignment */
+    color: #ffaa33; /* Amber color for the cow */
+    white-space: pre; /* Ensure whitespace is preserved */
+    margin: 0;
+}
+
+/* Recent Projects List */
+.recent-projects {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.project-item {
+    display: flex;
+    justify-content: space-between; /* Separate project info and actions */
+    align-items: center; /* Align items vertically */
+    background-color: #1a1a1a; /* Dark background */
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 1px solid #555; /* Subtle border */
+    border-radius: 5px; /* Smooth edges */
+    box-shadow: 0 0 5px #333; /* Slight shadow */
+}
+
+/* Project Info Section */
+.project-info {
+    max-width: 75%; /* Limit the width for text */
+}
+
+.project-date {
+    color: #888; /* Muted color for date */
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+.project-name {
+    color: #ffaa33; /* Amber for project name */
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.project-description {
+    color: #ddd; /* Light gray for description */
+    font-size: 0.9rem;
+    margin: 5px 0 0;
+}
+
+/* Project Actions Section */
+.project-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-shrink: 0; /* Prevent shrinking */
+}
+
+.project-actions .button {
+    padding: 8px 12px;
+    font-size: 0.85rem; /* Slightly smaller buttons */
+    text-align: center;
+}
+
+/* --------------------------------------- */
+/* --- Specific to binary_details.html --- */
+/* --------------------------------------- */
+
+/* Binary Grid */
+.binary-grid {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* --------------------------------- */
+/* --- specific to projects.html --- */
+/* --------------------------------- */
+
+/* Header text and button alignment */
+.projects-header {
+    display: flex;
+    justify-content: space-between; /* Align header text and button */
+    align-items: center; /* Center-align vertically */
+    margin-bottom: 20px;
+}
+
+.projects-header h2 {
+    color: #ffaa33; /* Amber for the title */
+    margin: 0;
+}
+
+.projects-header p {
+    color: #ddd; /* Light gray for the description */
+    margin: 0;
+}
+
+/* Projects Table Styling */
+/* Table container */
+.projects-table {
+    width: 100%; /* Full width */
+    border-collapse: collapse; /* Remove gaps between table cells */
+    margin-top: 10px;
+}
+
+.projects-table thead th {
+    background-color: #333; /* Dark background for the header */
+    color: #ffaa33; /* Amber text for column headers */
+    text-align: left;
+    padding: 10px;
+    border-bottom: 2px solid #ffaa33; /* Amber border */
+}
+
+.projects-table tbody td {
+    color: #ddd; /* Light gray text */
+    padding: 10px;
+    border-bottom: 1px solid #555; /* Subtle border between rows */
+}
+
+.projects-table tbody tr:hover {
+    background-color: #222; /* Slightly lighter background on hover */
+}
+
+/* --------------------------------------- */
+/* --- specific to create_project.html --- */
+/* --------------------------------------- */
+
+/* Create Project Form */
+.create-project-form {
+    display: flex;
+    flex-direction: column; /* Stack form elements vertically */
+    gap: 20px; /* Space between each form group */
+}
+
+/* Form Groups */
+.form-group {
+    display: flex;
+    flex-direction: column; /* Label and input stacked */
+}
+
+.form-group label {
+    color: #ffaa33; /* Amber for labels */
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+.form-group input, .form-group textarea {
+    background-color: #333; /* Dark background */
+    color: #ddd; /* Light gray text */
+    border: 1px solid #555; /* Subtle border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px;
+    font-size: 1rem;
+    box-sizing: border-box; /* Include padding in width calculation */
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    border-color: #ffaa33; /* Amber border on focus */
+    outline: none; /* Remove default focus outline */
+    box-shadow: 0 0 5px #ffaa33; /* Subtle glow */
+}
+
+/* Help Text */
+.form-help-text {
+    color: #888; /* Lighter gray for help text */
+    font-size: 0.85rem;
+    margin-top: 5px;
+}
+
+/* Red Asterisk for Required Fields */
+.required {
+    color: #ff6666; /* Red to denote required */
+}
+
+/* Form Buttons */
+.form-buttons {
+    display: flex;
+    gap: 10px; /* Space between buttons */
+}
+
+.create-project-form .button:hover {
+    background-color: #ffbf66; /* Lighter amber on hover */
+    color: #000; /* Retain black text */
+    box-shadow: 0 0 10px #ffaa33; /* Subtle glow */
+    transition: all 0.2s ease-in-out;
+}
+
+/* -------------------------------- */
+/* --- specific to details.html --- */
+/* -------------------------------- */
+
+.warning {
+    color: #ffa726;
+    background-color: #121212;
+    padding: 10px;
+    border: 1px solid #ffa726;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Filter Container Styling */
+.filter-container {
+    border: 1px solid #ffaa33; /* Amber border */
+    padding: 15px; /* Add space around the filters */
+    margin-bottom: 20px; /* Space below the filter container */
+    background-color: #1a1a1a; /* Slightly lighter background */
+    border-radius: 5px; /* Rounded edges */
+    color: #ffaa33; /* Amber text */
+}
+
+.filter-container h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    color: #ffaa33;
+    text-shadow: 0 0 5px #ffaa33;
+}
+
+/* Filter Inputs */
+#filter-form input[type="text"] {
+    width: 100%; /* Full-width inputs */
+    padding: 8px; /* Add padding for readability */
+    margin-bottom: 10px; /* Space between inputs */
+    border: 1px solid #ffaa33; /* Amber border */
+    border-radius: 5px; /* Rounded edges */
+    background-color: #000; /* Match dark theme */
+    color: #ffaa33; /* Amber text */
+}
+
+#filter-form input[type="text"]::placeholder {
+    color: #ffaa33; /* Amber placeholder text */
+}
+
+#filter-form button {
+    margin-top: 10px;
+}
+
+/* Header and Buttons Layout */
+.binaries-header {
+    display: flex;
+    justify-content: space-between; /* Align text and buttons */
+    align-items: center; /* Vertically center */
+    margin-bottom: 20px; /* Space below the header */
+}
+
+/* Expand/Collapse Buttons */
+.expand-collapse-container {
+    display: flex;
+    gap: 10px; /* Space between buttons */
+}
+
+.expand-collapse-button {
+    background-color: #666;
+    color: #fff;
+    padding: 10px;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.expand-collapse-button:hover {
+    background-color: #888;
+}
+
+/* Binary Table */
+.binary-table {
+    width: 100%;
+    border-collapse: collapse; /* Remove extra spacing between cells */
+    margin-top: 20px;
+    color: #ddd;
+    font-family: monospace;
+    font-size: 0.9rem;
+}
+
+/* Table Headers */
+.binary-table th {
+    background-color: #444;
+    color: #ffaa33; /* Amber for headers */
+    text-align: left;
+    padding: 10px;
+    border-bottom: 2px solid #555;
+}
+
+/* Table Rows */
+.binary-table td {
+    padding: 10px;
+    border-bottom: 1px solid #555;
+}
+
+/* Alternating Row Colors */
+.row-even {
+    background-color: #333; /* Darker gray */
+}
+
+.row-odd {
+    background-color: #222; /* Lighter gray */
+}
+
+/* Hover Effect for Main Rows */
+.binary-table tr:not(.binary-details-row):hover {
+    background-color: #444;
+    cursor: pointer;
+}
+
+/* Hidden Details Row */
+.binary-details-row {
+    background-color: #111; /* Slightly darker for hidden rows */
+}
+
+/* Details Content Styling */
+.binary-details {
+    padding: 10px;
+    font-size: 0.85rem;
+    background-color: #222;
+    border-radius: 5px;
+    color: #ccc;
+}
+
+/* Action Buttons */
+.binary-table .button {
+    padding: 5px 10px;
+    font-size: 0.85rem;
+    color: #000;
+    background-color: #ffaa33;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.binary-table .button:hover {
+    background-color: #ffcc66; /* Lighter amber hover */
+}
+
+/* Buttons */
+.binary-table .button {
+    padding: 5px 10px;
+    font-size: 0.85rem;
+    color: #000;
+    background-color: #ffaa33;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    margin-right: 5px; /* Space between buttons */
+}
+
+.binary-table .button:hover {
+    background-color: #ffcc66; /* Lighter amber hover */
+}
+
+/* Details Actions */
+.binary-details .binary-actions {
+    margin-top: 10px; /* Add spacing above the action buttons */
+}
+
+/* Expand icon in last column of binary table */
+
+/* Expand Icon Cell */
+.binary-table td.expand-icon {
+    padding-right: 20px; /* Add more space between the arrow and the edge of the table */
+    text-align: center;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #ffaa33;
+    transition: transform 0.3s ease;
+}
+
+.binary-table td.expand-icon:hover {
+    color: #ffcc66; /* Lighter amber on hover */
+}
+
+/* Highlight String Results on Details.html */
+
+/* Highlight Matching Strings */
+.binary-box .matching-strings {
+    color: #00ffaa; /* Teal green */
+    font-weight: bold; /* Bold text for emphasis */
+    margin-top: 10px; /* Add some space above the section */
+}
+
+/* Matching Strings List */
+.binary-box .matching-strings ul {
+    margin: 5px 0 0;
+    padding-left: 20px; /* Indent list items */
+    list-style-type: disc; /* Add bullets for clarity */
+}
+
+.binary-box .matching-strings ul li {
+    color: #00ffaa; /* Teal green for list items */
+    font-family: monospace; /* Terminal-style font */
+}
+
+/* Header box with project info and filters on details.html */
+
+/* Container for the header section */
+.details-header {
+    display: flex;
+    justify-content: space-between; /* Separate the details and filters */
+    align-items: flex-start; /* Align items to the top */
+    margin-bottom: 20px; /* Add space below the header */
+    gap: 20px; /* Add spacing between the two sections */
+}
+
+/* Styling for the details box */
+.project-details-box {
+    flex: 1; /* Take up available space on the left */
+    background-color: #1a1a1a; /* Dark background for contrast */
+    padding: 15px; /* Space inside the box */
+    border: 1px solid #ffaa33; /* Amber border for a terminal vibe */
+    border-radius: 5px; /* Slightly rounded corners */
+    max-width: 300px; /* Keep it compact */
+    box-shadow: 0 0 10px #ffaa33; /* Subtle glow effect */
+}
+
+/* Header inside the details box */
+.project-details-box h4 {
+    margin: 0 0 10px 0; /* Add space below the heading */
+    color: #ffaa33; /* Amber text */
+}
+
+/* Paragraphs in the details box */
+.project-details-box p {
+    margin: 5px 0; /* Add some spacing between lines */
+    font-size: 0.9rem; /* Slightly smaller text */
+    color: #ddd; /* Light gray text */
+}
+
+/* Styling for the filters container */
+.filter-container {
+    flex: 1; /* Take up available space on the right */
+    background-color: #1a1a1a; /* Match the details box */
+    padding: 15px; /* Space inside the box */
+    border: 1px solid #ffaa33; /* Amber border */
+    border-radius: 5px; /* Slightly rounded corners */
+    box-shadow: 0 0 10px #ffaa33; /* Subtle glow effect */
+}
+
+/* Header inside the filter container */
+.filter-container h4 {
+    display: flex;
+    justify-content: space-between; /* Space between "Filters" and the button */
+    align-items: center; /* Align vertically */
+    margin: 0; /* Remove extra margins */
+}
+
+/* Align the toggle button to the right */
+.filter-container #toggle-filters {
+    margin-left: auto; /* Push the button to the far right */
+    font-size: 0.85rem; /* Match the smaller button style */
+    padding: 5px 10px; /* Compact padding */
+}
+
+/* Inputs in the Filters Form */
+#filter-form input {
+    width: calc(100% - 20px); /* Subtract padding for left and right (10px each) */
+    padding: 8px; /* Add consistent padding inside the input */
+    margin-bottom: 10px; /* Space between inputs */
+    border: 1px solid #555; /* Subtle border */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #333; /* Dark background */
+    color: #ddd; /* Light gray text */
+    box-sizing: border-box; /* Include padding in the width calculation */
+}
+
+/* Buttons in the filters form */
+#filter-form .button {
+    margin-top: 10px; /* Add space above buttons */
+}
+
+/* Hide the filters form by default */
+.hidden {
+    display: none; /* Completely hide the element */
+}
+
+/* Transition effect for toggling */
+.filter-container #filter-form {
+    overflow: hidden;
+    transition: max-height 0.3s ease-out; /* Smooth open/close */
+}
+
+.filter-container.open #filter-form {
+    display: block;
+}
+
+/* Button Container */
+.details-buttons {
+    display: flex;
+    justify-content: flex-start; /* Align buttons to the left */
+    gap: 10px; /* Space between buttons */
+    margin-top: 20px; /* Add space above the buttons */
+}
+
+/* Re-Scan Button (Primary) */
+.rescan-button {
+    background-color: #ffaa33; /* Amber for primary action */
+    color: #000; /* Black text for contrast */
+    padding: 8px 15px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.rescan-button:hover {
+    background-color: #ffbf66; /* Lighter amber */
+    box-shadow: 0 0 10px #ffaa33; /* Glow effect */
+}

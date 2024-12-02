@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Breadcrumb Navigation -->
+<nav class="breadcrumb">
+    <a href="/projects">Projects</a> &gt;
+    <span>Project: {{ project.name }}</span>
+</nav>
+
+<div class="details-header">
+    <div class="project-details-box">
+        <h4>Project Details</h4>
+        <p><strong>Description:</strong> {{ project.description or "No description" }}</p>
+        <p><strong>Folder Path:</strong> {{ project.folder_path }}</p>
+        <p><strong>Created At:</strong> {{ project.created_at.strftime("%Y-%m-%d %H:%M:%S") }}</p>
+    </div>
+    <div class="filter-container">
+        <h4>
+            Filters
+            <button type="button" id="toggle-filters" class="button">Expand</button>
+        </h4>
+        <form id="filter-form" class="hidden">
+            <label for="filter-name">Filter by Name:</label>
+            <input type="text" id="filter-name" placeholder="Enter binary name...">
+            <label for="filter-string">Filter by String:</label>
+            <input type="text" id="filter-string" placeholder="Enter string...">
+            <label for="filter-library">Filter by Shared Library:</label>
+            <input type="text" id="filter-library" placeholder="Enter library...">
+            <button type="button" id="apply-filters" class="button">Apply Filters</button>
+            <button type="button" id="clear-filters" class="button">Clear Filters</button>
+        </form>
+    </div>
+</div>
+
+<div class="binaries-header">
+    <h3>Binaries</h3>
+{% if binaries|length != 0 %}
+    <div class="expand-collapse-container">
+        <button class="button expand-collapse-button" id="expand-all">Expand All</button>
+        <button class="button expand-collapse-button" id="collapse-all">Collapse All</button>
+    </div>
+{% endif %}
+</div>
+
+<!-- Check if there are any binaries -->
+{% if binaries|length == 0 %}
+    <p class="warning">No binaries associated with this project. Please start a scan first.</p>
+{% else %}
+    <!-- Binary Results Section -->
+    <div id="binary-results">
+        <table class="binary-table">
+            <thead>
+                <tr>
+                    <th>Binary Name</th>
+                    <th>File Type</th>
+                    <th>Path</th>
+                    <th></th> <!-- Empty header for the expand icon -->
+                </tr>
+            </thead>
+            <tbody>
+                <!-- JavaScript will populate this table -->
+            </tbody>
+        </table>
+    </div>
+{% endif %}
+
+<div class="details-buttons">
+    <form action="/start-scan" method="post" class="form-inline">
+        <input type="hidden" name="project_id" value="{{ project.id }}">
+        <input type="hidden" name="folder_path" value="{{ project.folder_path }}">
+        <button type="submit" class="button rescan-button">
+            {{ "Re-Scan Project" if binaries|length > 0 else "Start Scan" }}
+        </button>
+    </form>
+    <a href="/projects" class="button cancel-button">Back to Projects</a>
+</div>
+
+<script>
+    const binaries = {{ binaries|tojson }};
+    const projectId = {{ project.id }};
+</script>
+<script src="/static/js/filter.js"></script>
+{% endblock %}

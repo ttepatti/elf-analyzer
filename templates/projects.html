@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Breadcrumb Navigation -->
+<nav class="breadcrumb">
+    <span>Projects</span>
+</nav>
+
+<h2>Projects</h2>
+
+<div class="projects-header">
+    <p>View your existing projects or create a new one.</p>
+    <a href="/projects/create" class="button">Create New Project</a>
+</div>
+
+<table class="projects-table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Folder Path</th>
+            <th>Creation Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for project in projects %}
+        <tr>
+            <td>{{ project.name }}</td>
+            <td>{{ project.description or "No description" }}</td>
+            <td>{{ project.folder_path }}</td>
+            <td>{{ project.created_at.strftime("%Y-%m-%d %H:%M:%S") }}</td>
+            <td>
+                <a href="/projects/{{ project.id }}" class="button">View Details</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

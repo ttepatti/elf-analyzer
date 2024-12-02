@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Breadcrumb Navigation -->
+<nav class="breadcrumb">
+    <a href="/projects/{{ binary.project_id }}">Projects</a> &gt;
+    <a href="/projects/{{ binary.project_id }}">Project Details</a> &gt;
+    <span>Binary: {{ binary.name }}</span>
+</nav>
+
+<h2>Binary Details</h2>
+
+<div class="binary-grid">
+    <div><strong>Binary Name:</strong></div>
+    <div>{{ binary.name }}</div>
+    <div><strong>Binary Path:</strong></div>
+    <div>{{ binary.path }}</div>
+    <div><strong>File Info:</strong></div>
+    <div>{{ binary.file_type or "Unknown" }}</div>
+    <div><strong>SHA256 Hash:</strong></div>
+    <div>{{ binary.sha256 }}</div>
+    <div><strong>String Count:</strong></div>
+    <div>{{ binary.strings_count or 0 }}</div>
+    <div><strong>Shared Libraries:</strong></div>
+    <div>
+        {% if binary.shared_libraries and binary.shared_libraries|length > 0 %}
+        <ul>
+            {% for library in binary.shared_libraries %}
+            <li>{{ library }}</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>No shared libraries found.</p>
+        {% endif %}
+    </div>
+</div>
+
+<h3>Strings</h3>
+<div class="scrollable-textarea">
+    <pre id="strings-container">
+{% for string in strings %}{{ string }}{% endfor %}
+    </pre>
+</div>
+
+<a href="/binaries/{{ binary.id }}/strings" class="button">Save Strings File</a>
+<a href="/projects/{{ binary.project_id }}" class="button">Back to Project</a>
+{% endblock %}

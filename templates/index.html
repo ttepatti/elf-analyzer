@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Breadcrumb Navigation -->
+<nav class="breadcrumb">
+    <span>Projects</span>
+</nav>
+
+<h2>Welcome to ELF Analyzer</h2>
+<div class="welcome-section">
+    <p class="typing-effect">Analyze and explore your binaries like never before.</p>
+</div>
+
+<div class="dashboard-section">
+    <!-- Quote of the Day -->
+    <div class="quote-box">
+        <h3>Quote of the Day</h3>
+        <p class="quote">"{{ quote.text }}"</p>
+        <p class="author">- {{ quote.author }}</p>
+    </div>
+
+    <!-- Quick Access -->
+    <div class="cow-panel">
+        <div class="quick-access-links">
+            <a href="/projects" class="button">View Projects</a>
+            <a href="/projects/create" class="button">Create New Project</a>
+        </div>
+        <pre class="cow">
+ _____________________      
+< Quick Access        >     
+ ---------------------      
+        \   ^__^            
+         \  (oo)\_______    
+            (__)\       )\/\
+                ||----w |   
+                ||     ||   
+        </pre>
+    </div>
+</div>
+
+<div class="stats-section">
+    <h3>Recent Project Activity</h3>
+    {% if projects %}
+        <ul class="recent-projects">
+            {% for project in projects %}
+            <li class="project-item">
+                <div class="project-info">
+                    <p class="project-date">{{ project.created_at.strftime("%Y-%m-%d") }}</p>
+                    <p class="project-name"><strong>{{ project.name }}</strong></p>
+                    <p class="project-description">{{ project.description or "No description provided." }}</p>
+                </div>
+                <div class="project-actions">
+                    <a href="/projects/{{ project.id }}" class="button">View Details</a>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No recent projects. Start by <a href="/projects/create" class="button">creating a new project</a>.</p>
+    {% endif %}
+</div>
+
+
+{% endblock %}

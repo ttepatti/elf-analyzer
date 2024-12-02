@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Scan Progress</h2>
+
+<h3>Folder Scanning</h3>
+<progress id="folder-scan-progress" value="0" max="100"></progress>
+<p id="folder-scan-status">Idle</p>
+
+<h3>Binary Analysis</h3>
+<progress id="binary-analysis-progress" value="0" max="100"></progress>
+<p id="binary-analysis-status">Idle</p>
+
+<div id="navigation-buttons" style="display: none;">
+    <a href="/projects" class="button">Back to Projects</a>
+    <a href="/projects/{{ project_id }}" class="button">View Project Details</a>
+</div>
+
+<script>
+    const projectId = {{ project_id }};
+</script>
+<script src="/static/js/progress.js"></script>
+{% endblock %}
