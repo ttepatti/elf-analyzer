@@ -47,6 +47,16 @@ Python dependencies can all be installed using pip:
 pip install -r requirements.txt
 ```
 
+## Launching the Tool
+
+To launch the tool, simply execute `app.py`:
+
+```
+python3 app.py
+```
+
+Then, navigate to `http://localhost:5000` in your web browser and you should see the application's UI!
+
 ## Project Structure
 
 ```
