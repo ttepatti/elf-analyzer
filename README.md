@@ -30,6 +30,14 @@ Additional screenshots are included in the [screenshots/ folder](screenshots/REA
 
 That's all for now! There is a massive TODO list for this project - see bottom of README for more info.
 
+## (Optional) Set Up venv
+
+You can optionally set up a Python virtual environment to ensure you don't cause conflicts with your main Python environment:
+
+```
+python3 -m venv elf-analyzer-venv
+```
+
 ## Dependencies
 
 Python dependencies can all be installed using pip:
