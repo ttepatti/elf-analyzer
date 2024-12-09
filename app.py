@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 from flask import Flask, render_template
 # For setting up and migrating the database
 from flask_migrate import Migrate, init, migrate, upgrade
