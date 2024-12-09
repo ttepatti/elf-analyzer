@@ -98,7 +98,6 @@ elf-analyzer/
 - Break out CSS from one cursed mega stylesheet into multiple template-specific files
 - Add button to delete project
 - Add additional binary analysis techniques
-	- Fix shared library detection (ldd is unreliable depending on architecture)
 	- Add ability to run headless Ghidra techniques against binaries
 - Add architecture detection support
 - Add overview panel that gives binary counts, detected architecture, common metadata, etc.
