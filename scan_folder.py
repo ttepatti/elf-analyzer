@@ -121,8 +121,8 @@ def save_binary_analysis_results(binary_path, project_id, results):
         path = binary_path,
         sha256 = results["sha256"],
         file_type = results["file_type"],
-        strings_file = "\n".join(results["strings"]),
-        strings_count = len(results["strings"]),
+        strings_file = results["strings_file"],
+        strings_count = results["strings_count"],
         shared_libraries = results["shared_libraries"],
         project_id = project_id
     )
