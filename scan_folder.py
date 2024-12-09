@@ -98,6 +98,12 @@ def save_binary_analysis_results(binary_path, project_id, results):
     # Check for existing binary with the same SHA256 within the current project
     existing_binary = Binary.query.filter_by(sha256=results["sha256"], project_id=project_id).first()
 
+    # TODO: This has a weird edge case: what if we have the exact same binary 
+    # located in multiple folders in our scanned directories?
+    # Current behavior means the file path will be overwritten each time it is
+    # discovered, so only one file path will be visible at the end... 
+    # Should probably address this and list all uniquely-discovered file paths!
+
     if existing_binary:
         print(f"Binary with SHA256 {results['sha256']} already exists in project {project_id}. Updating entry.")
         existing_binary.name = binary_path.split("/")[-1]
@@ -105,18 +111,20 @@ def save_binary_analysis_results(binary_path, project_id, results):
         existing_binary.file_type = results["file_type"]
         existing_binary.strings_file = results["strings_file"]
         existing_binary.strings_count = results["strings_count"]
+        existing_binary.shared_libraries = results["shared_libraries"]
         db.session.commit()
         return
 
     # If no existing binary, create a new entry
     binary = Binary(
-        name=binary_path.split("/")[-1],
-        path=binary_path,
-        sha256=results["sha256"],
-        file_type=results["file_type"],
-        strings_file="\n".join(results["strings"]),
-        strings_count=len(results["strings"]),
-        project_id=project_id
+        name = binary_path.split("/")[-1],
+        path = binary_path,
+        sha256 = results["sha256"],
+        file_type = results["file_type"],
+        strings_file = "\n".join(results["strings"]),
+        strings_count = len(results["strings"]),
+        shared_libraries = results["shared_libraries"],
+        project_id = project_id
     )
     db.session.add(binary)
     db.session.commit()

@@ -1,6 +1,7 @@
 import hashlib
 import subprocess
 import os
+import re
 
 def calculate_sha256(binary_path):
     """Calculate the SHA256 hash of a binary."""
@@ -59,13 +60,14 @@ def determine_file_type(binary_path):
         return "Unknown"
 
 def extract_shared_libraries(binary_path):
-    """Extract shared libraries using the ldd command."""
+    """Extract shared libraries using the 'readelf' command."""
     try:
-        result = subprocess.run(["ldd", binary_path], capture_output=True, text=True, check=True)
+        result = subprocess.run(["readelf", "-d", binary_path], capture_output=True, text=True, check=True)
         libraries = []
         for line in result.stdout.splitlines():
-            if "=>" in line:  # Match lines showing shared libraries
-                libraries.append(line.split("=>")[0].strip())
+            if "Shared library:" in line:  # Match lines showing shared libraries
+                # Use re.search() to get everything between the [ ] characters
+                libraries.append(re.search('\[(.*)\]', line).group(1))
         return libraries
     except Exception as e:
         print(f"Error extracting shared libraries for {binary_path}: {e}")
