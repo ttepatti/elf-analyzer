@@ -23,7 +23,7 @@ Additional screenshots are included in the [screenshots/ folder](screenshots/REA
 		- Run `file` on the binary to determine specific ELF file type and debug info
 		- Run `strings` on the binary to extract all strings
 		- Generate the SHA256 hash of the binary
-		- Run `ldd` on the binary to extract list of shared libraries
+		- Run `readelf` on the binary to extract list of shared libraries
 - A project landing page will be generated that allows you to browse through and filter all binary results
 - Specific binaries can be inspected
 	- Each binary's strings can also be exported to a text file
