@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% block head %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ELF Analyzer</title>
+    <title>{% block title %}{% endblock %} - ELF Analyzer</title>
     <link rel="stylesheet" href="/static/css/styles.css">
     <script src="/static/js/base.js" defer></script>
+    {% endblock %}
 </head>
 <body>
     <div class="terminal-background"></div>
