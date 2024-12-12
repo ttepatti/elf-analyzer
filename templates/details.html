@@ -2,6 +2,25 @@
 
 {% block title %}{{ project.name }}{% endblock %}
 
+{% block head %}
+  {{ super() }}
+  <link rel="stylesheet" href="/static/css/tree.css">
+{% endblock %}
+
+{% block sidecontent %}
+<div class="content-box tree-pane">
+    <div class="tree-header">
+        <h3>Folder Structure</h3>
+        <div class="sticky-folder">
+            <span id="current-folder">/</span>
+        </div>
+    </div>
+    <div class="tree-content">
+        <pre id="ascii-tree"></pre>
+    </div>
+</div>
+{% endblock %}
+
 {% block content %}
 <!-- Breadcrumb Navigation -->
 <nav class="breadcrumb">
@@ -82,4 +101,5 @@
     const projectId = {{ project.id }};
 </script>
 <script src="/static/js/filter.js"></script>
+<script src="/static/js/tree.js"></script>
 {% endblock %}

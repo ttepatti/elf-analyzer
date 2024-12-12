@@ -81,3 +81,23 @@ def search_strings(project_id):
                 print(f"Error reading strings file for binary {binary.name}: {e}")
 
     return jsonify(results)
+
+@project_routes.route("/projects/<int:project_id>/tree", methods=["GET"])
+def get_tree(project_id):
+    """Generate a JSON representation of the firmware folder tree."""
+    project = Project.query.get_or_404(project_id)
+    folder_path = project.folder_path
+
+    def build_tree(path):
+        tree = {"name": os.path.basename(path), "path": path, "children": []}
+        if os.path.isdir(path):
+            for entry in os.listdir(path):
+                full_path = os.path.join(path, entry)
+                tree["children"].append(build_tree(full_path))
+        return tree
+
+    if not os.path.exists(folder_path):
+        return jsonify({"error": "Folder path does not exist"}), 404
+
+    tree_data = build_tree(folder_path)
+    return jsonify(tree_data)

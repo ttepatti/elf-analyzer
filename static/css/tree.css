@@ -1,0 +1,99 @@
+/* Overall Page Container */
+.page-container {
+    display: flex;
+    gap: 20px; /* Add a gap between the two panes */
+    width: 100%;
+    /* max-width: 1200px; /* Optional: limit the width for readability */
+    margin: 0 auto; /* Center the content on the page */
+    align-items: stretch; /* Match the height of both panes */
+    /* height: calc(100vh - 40px); /* Adjust to available viewport height */
+}
+
+/* Main Content Pane */
+.main-pane {
+    width: 70%; /* Take the remaining 70% */
+    background-color: #1a1a1a;
+    color: #ddd;
+    overflow-y: scroll;
+    height: 100%; /* Match the parent container's height */
+    box-sizing: border-box; /* Ensure padding is included in width */
+}
+
+/* Tree Pane */
+.tree-pane {
+    width: 30%; /* Take 30% of the available width */
+    background-color: #1a1a1a;
+    color: #ddd;
+    font-family: monospace;
+    overflow-y: auto; /* Allow vertical scrolling if needed */
+    position: sticky; /* Sticky positioning for floating behavior */
+    top: 30px; /* Add padding from the top of the viewport */
+    height: calc(100vh - 80px); /* Limit height with padding on top and bottom */
+    padding-top: 0px; /* No padding on top so header sits in the right place */
+}
+
+/* Tree Header */
+.tree-header {
+    position: sticky;
+    top: 0;
+    background-color: #1a1a1a; /* Match the background color of the pane */
+    z-index: 1; /* Ensure the header stays above scrollable content */
+    padding: 5px; /* Add spacing below the header */
+}
+
+/* Sticky Folder Header */
+.sticky-folder {
+    position: sticky;
+    top: 30px; /* Below the main "Folder Structure" header */
+    background-color: #1a1a1a;
+    z-index: 2; /* Ensure it stays above the tree content */
+    padding: 5px 10px;
+    font-weight: bold;
+    font-style: italic;
+    color: #ffaa33; /* Amber to highlight current folder */
+    border-bottom: 1px solid #555; /* Visual separation */
+}
+
+/* Tree Content */
+.tree-content {
+    overflow-y: auto; /* Allow vertical scrolling for the tree data */
+    flex: 1; /* Let the content take the remaining height */
+    margin-top: 10px; /* space below the sticky header */
+}
+
+/* Preserve whitespace in true 'pre' fashion */
+#ascii-tree {
+    margin: 0;
+    white-space: pre;
+}
+
+/* Folders (Non-Clickable) */
+.folder {
+    color: #ddd; /* Brighter text color for readability */
+    font-style: italic; /* Add italics to differentiate */
+    cursor: default; /* No pointer cursor for folders */
+}
+
+/* ELF Files (Clickable) */
+.elf-file {
+    color: #00ffaa; /* Teal green indicates clickable */
+    cursor: pointer;
+}
+
+/* Non-ELF Files (Non-Clickable) */
+.non-elf-file {
+    color: #555; /* Dark gray for non-ELF files */
+    cursor: not-allowed;
+}
+
+/* Highlighted Node (Recently Clicked) */
+.highlighted-node {
+    color: #ffaa33; /* Amber indicates the file was just clicked */
+    font-weight: bold;
+}
+
+/* Highlighted Row in Binary Results */
+.binary-table tr.highlighted {
+    background-color: #00ffaa; /* Teal green background for visibility */
+    color: #000; /* Contrast text color */
+}
