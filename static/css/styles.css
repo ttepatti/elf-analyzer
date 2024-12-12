@@ -79,7 +79,7 @@ input:focus, textarea:focus, select:focus {
 }
 
 /* Center Content Horizontally, Align to Top Vertically */
-.container {
+.page-container {
     display: flex;
     justify-content: center; /* Horizontal centering */
     align-items: flex-start; /* Align to top vertically */
@@ -90,7 +90,7 @@ input:focus, textarea:focus, select:focus {
 
 /* Main Content Box */
 .content-box {
-    max-width: 1000px;
+    /* max-width: 1000px; /* enables max content width */
     width: 100%;
     padding: 20px;
     border: 2px solid #ffaa33;

@@ -83,6 +83,13 @@ document.addEventListener("DOMContentLoaded", function () {
         detailsRow.style.display = detailsRow.style.display === "table-row" ? "none" : "table-row";
     }
 
+    function toggleAllDetails(expand) {
+        const detailRows = document.querySelectorAll(".binary-details-row");
+    
+        detailRows.forEach((row) => {
+            row.style.display = expand ? "table-row" : "none";
+        });
+    }
 
     // Apply filters and render
     async function applyFilters() {
@@ -139,6 +146,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Render the final filtered list
         renderBinaries(filteredBinaries);
+
+        // Update the tree view
+        window.updateTreeView(filteredBinaries);
     }
 
     toggleFiltersButton.addEventListener("click", () => {
@@ -173,8 +183,16 @@ document.addEventListener("DOMContentLoaded", function () {
         
         // Render the full list of binaries
         renderBinaries(binaries);
+
+        let originalBinaries = [...binaries];
+        // Reset `matching_strings` for all binaries
+        originalBinaries.forEach((binary) => {
+            binary.matching_strings = null;
+        });
+
+        // Reset the tree view to the original structure
+        window.updateTreeView(originalBinaries);
     });
 
     renderBinaries(binaries); // Render all binaries initially
 });
-
