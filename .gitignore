@@ -1,1 +1,8 @@
+# elf-analyzer files/directories
 elf-analyzer-venv/
+instance/elf_analyzer.db
+string_dumps/
+migrations/
+
+# Python files/directories
+__pycache__/
