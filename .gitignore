@@ -2,6 +2,7 @@
 elf-analyzer-venv/
 instance/elf_analyzer.db
 string_dumps/
+strings_dumps/
 migrations/
 
 # Python files/directories
